@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="500" height="15" tilewidth="32" tileheight="32" nextobjectid="7">
+ <tileset firstgid="1" name="tmw_desert_spacing" tilewidth="32" tileheight="32" spacing="1" tilecount="48">
+  <image source="../tilesheets/tmw_desert_spacing.png" width="265" height="199"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="500" height="15">
+  <data encoding="base64" compression="zlib">
+   eJztw7ENACAMA7CKkSMYOvL/gRzRKciW3FXVqqqqqqqqqqqqGv6qqvGPqqqqqqo6vlTV+FtVVVVVVVVVVVU/+ACSd7OH
+  </data>
+ </layer>
+ <objectgroup name="collision-layer">
+  <object id="3" x="320" y="187">
+   <polyline points="0,0 -2,110"/>
+  </object>
+  <object id="4" x="256" y="302">
+   <polyline points="0,0 15457,0"/>
+  </object>
+  <object id="5" x="15681" y="297">
+   <polyline points="0,0 -2,-113"/>
+  </object>
+  <object id="6" x="15715" y="187">
+   <polyline points="0,0 -15455,-4"/>
+  </object>
+ </objectgroup>
+</map>
