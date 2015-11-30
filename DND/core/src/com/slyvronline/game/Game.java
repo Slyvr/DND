@@ -3,159 +3,107 @@ package com.slyvronline.game;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.math.Vector3;
-import com.badlogic.gdx.physics.box2d.Body;
-import com.badlogic.gdx.physics.box2d.BodyDef;
-import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
-import com.badlogic.gdx.physics.box2d.PolygonShape;
-import com.badlogic.gdx.physics.box2d.World;
-import com.slyvronline.game.utils.TiledObjectUtil;
+import com.badlogic.gdx.InputProcessor;
+import com.slyvronline.game.load.LoadFonts;
+import com.slyvronline.game.load.LoadImgs;
+import com.slyvronline.game.load.LoadMenus;
+import com.slyvronline.game.load.LoadMusic;
+import com.slyvronline.game.load.LoadSounds;
+import com.slyvronline.game.objects.Global;
+import com.slyvronline.game.utils.GameConstants;
+import com.slyvronline.game.utils.Renderer;
+import com.slyvronline.game.utils.Updater;
 
-public class Game extends ApplicationAdapter {
+public class Game extends ApplicationAdapter implements InputProcessor {
 	public static final String TITLE = "DND";
 	
-	private boolean DEBUG = false;
-	private final float SCALE = 2.0f;
-	public final static float PPM = 30.0f;
-	
-	private OrthographicCamera camera;
-	
-	private OrthogonalTiledMapRenderer tmr;
-	private TiledMap map;
-	
-	private Box2DDebugRenderer b2dr;
-	private World world;
-	private Body player;
-	
-	private SpriteBatch batch;
-	private Texture tex;
+	private static Global global;
 	
 	@Override
 	public void create () {
+		global = new Global();
+		LoadImgs.load();
+		LoadFonts.load();
+		LoadSounds.load();
+		LoadMusic.load();
+		LoadMenus.load();
+		
 		float w = Gdx.graphics.getWidth();
 		float h = Gdx.graphics.getHeight();
 		
-		camera = new OrthographicCamera();
-		camera.setToOrtho(false, w / SCALE, h / SCALE);
+		//Start game in fullscreen
+		//Gdx.graphics.setDisplayMode(GameConstants.DEFAULT_WIDTH, GameConstants.DEFAULT_HEIGHT, true);
 		
-		//world = new World(new Vector2(0f, -9.8f), false);
-		world = new World(new Vector2(0f, 0f), false);
-		b2dr = new Box2DDebugRenderer();
-		
-		player = createBox(370,200,32,32,false);
-		
-		batch = new SpriteBatch();
-		tex = new Texture("data/characters/grunt.png");
-		
-		map = new TmxMapLoader().load("data/tilemaps/world1.tmx");
-		tmr = new OrthogonalTiledMapRenderer(map);
-		
-		TiledObjectUtil.parseTiledObjectLayer(world, map.getLayers().get("collision-layer").getObjects());
+		Gdx.input.setInputProcessor(this);
 	}
 
 	@Override
 	public void render () {
-		update(Gdx.graphics.getDeltaTime());
+		Updater.update();
 		
 		//Render
-		Gdx.gl.glClearColor(0f, 0f, 0f, 1f);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		Renderer.render();
 		
-		tmr.render();
-		
-		b2dr.render(world, camera.combined.scl(PPM));
-		
-		batch.begin();
-		batch.draw(tex, player.getPosition().x * PPM - (tex.getWidth() / 2), player.getPosition().y * PPM - (tex.getHeight() / 2));
-		batch.end();
-		
-		if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) Gdx.app.exit();
+		//if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) Gdx.app.exit();
 	}
 	
-	@Override
-	public void resize(int w, int h) {
-		camera.setToOrtho(false, w / SCALE, h / SCALE);
-	}
-	
-	@Override
-	public void dispose(){
-		world.dispose();
-		b2dr.dispose();
-		batch.dispose();
-		tex.dispose();
-		tmr.dispose();
-		map.dispose();
-	}
-	
-	public void update(float delta){
-		world.step(1 / 60f,  6,  2);
-		
-		inputUpdate(delta);
-		cameraUpdate(delta);
-		tmr.setView(camera);
-		batch.setProjectionMatrix(camera.combined);
-	}
-	
-	public void inputUpdate(float delat){
-		int horizontalForce = 0;
-		int verticalForce = 0;
-		
-		if (Gdx.input.isKeyPressed(Input.Keys.LEFT)){
-			horizontalForce -= 5;
-		}
-		if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
-			horizontalForce += 5;
-		}
-		
-		if (Gdx.input.isKeyPressed(Input.Keys.UP)){
-			verticalForce += 5;
-		}
-		
-		if (Gdx.input.isKeyPressed(Input.Keys.DOWN)){
-			verticalForce -= 5;
-		}
-		
-		player.setLinearVelocity(horizontalForce * 5, verticalForce * 5);
-	}
-	
-	public void cameraUpdate(float delta){
-		Vector3 position = camera.position;
-		position.x = player.getPosition().x * PPM;
-		position.y = player.getPosition().y * PPM;
-		camera.position.set(position);
-		
-		camera.update();
-	}
-	
-	public Body createBox(int x, int y, int width, int height, boolean isStatic){
-		Body pBody;
-		BodyDef def = new BodyDef();
-		
-		if (isStatic)
-			def.type = BodyDef.BodyType.StaticBody;
-		else
-			def.type = BodyDef.BodyType.DynamicBody;
-		
-		def.position.set(x / PPM, y / PPM);
-		def.fixedRotation = true;
-		pBody = world.createBody(def);
-		
-		PolygonShape shape = new PolygonShape();
-		shape.setAsBox(width / 2 / PPM, height / 2 / PPM);
-		
-		pBody.createFixture(shape, 1.0f);
-		shape.dispose();
-		return pBody;
+	public static Global getGlobal(){
+		return global;
 	}
 	
 	public void pause() {}
 	public void resume() {}
+
+	@Override
+	public boolean keyDown(int keycode) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean keyUp(int keycode) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean keyTyped(char character) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean touchDragged(int screenX, int screenY, int pointer) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean mouseMoved(int screenX, int screenY) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean scrolled(int amount) {
+		if (amount > 0 && global.getCamera().zoom < 2.2f){
+			global.getCamera().zoom += 0.05f;
+		}
+		else if (amount < 0 && global.getCamera().zoom > 0.05){
+			global.getCamera().zoom -= 0.05f;
+		}
+		return false;
+	}
 }
