@@ -136,7 +136,7 @@ public class LoadMenus {
 				btnAddCharacter.getImg().getTex().getHeight()));
 		ents.add(btnAddCharacter);
 		
-		//LAYER 1
+		//LAYER 1------------------------------------------------------------------------------------------------
 		Ent btnDelete = new Ent();
 		btnDelete.setName("btnDeleteTile");
 		btnDelete.setImg(Game.getGlobal().getImgByName("delete"));
@@ -188,7 +188,67 @@ public class LoadMenus {
 		btnWater.setType("layer1");
 		ents.add(btnWater);
 		
-		//LAYER 2
+		Ent btnBars = new Ent();
+		btnBars.setName("btnBarsTile");
+		btnBars.setImg(Game.getGlobal().getImgByName("bars"));
+		btnBars.setPosBox(new Rectangle(btnWater.getPosBox().getX() + 32,
+				0,
+				btnBars.getImg().getTex().getWidth(),
+				btnBars.getImg().getTex().getHeight()));
+		btnBars.setType("layer1");
+		ents.add(btnBars);
+		
+		Ent btnCarpet = new Ent();
+		btnCarpet.setName("btnCarpetTile");
+		btnCarpet.setImg(Game.getGlobal().getImgByName("carpet"));
+		btnCarpet.setPosBox(new Rectangle(btnBars.getPosBox().getX() + 32,
+				0,
+				btnCarpet.getImg().getTex().getWidth(),
+				btnCarpet.getImg().getTex().getHeight()));
+		btnCarpet.setType("layer1");
+		ents.add(btnCarpet);
+		
+		Ent btnGrass2 = new Ent();
+		btnGrass2.setName("btnGrass2Tile");
+		btnGrass2.setImg(Game.getGlobal().getImgByName("grass"));
+		btnGrass2.setPosBox(new Rectangle(btnCarpet.getPosBox().getX() + 32,
+				0,
+				btnGrass2.getImg().getTex().getWidth(),
+				btnGrass2.getImg().getTex().getHeight()));
+		btnGrass2.setType("layer1");
+		ents.add(btnGrass2);
+		
+		Ent btnStairs = new Ent();
+		btnStairs.setName("btnStairsTile");
+		btnStairs.setImg(Game.getGlobal().getImgByName("stairs"));
+		btnStairs.setPosBox(new Rectangle(btnGrass2.getPosBox().getX() + 32,
+				0,
+				btnStairs.getImg().getTex().getWidth(),
+				btnStairs.getImg().getTex().getHeight()));
+		btnStairs.setType("layer1");
+		ents.add(btnStairs);
+		
+		Ent btnStone2 = new Ent();
+		btnStone2.setName("btnStone2Tile");
+		btnStone2.setImg(Game.getGlobal().getImgByName("stone"));
+		btnStone2.setPosBox(new Rectangle(btnStairs.getPosBox().getX() + 32,
+				0,
+				btnStone2.getImg().getTex().getWidth(),
+				btnStone2.getImg().getTex().getHeight()));
+		btnStone2.setType("layer1");
+		ents.add(btnStone2);
+		
+		Ent btnWoodPlank = new Ent();
+		btnWoodPlank.setName("btnWoodPlankTile");
+		btnWoodPlank.setImg(Game.getGlobal().getImgByName("woodplank"));
+		btnWoodPlank.setPosBox(new Rectangle(btnStone2.getPosBox().getX() + 32,
+				0,
+				btnWoodPlank.getImg().getTex().getWidth(),
+				btnWoodPlank.getImg().getTex().getHeight()));
+		btnWoodPlank.setType("layer1");
+		ents.add(btnWoodPlank);
+		
+		//LAYER 2------------------------------------------------------------------------------------------------------
 		Ent btnDelete2 = new Ent();
 		btnDelete2.setName("btnDelete2Tile");
 		btnDelete2.setImg(Game.getGlobal().getImgByName("delete"));
@@ -269,6 +329,206 @@ public class LoadMenus {
 				btnTree.getImg().getTex().getHeight()));
 		btnTree.setType("layer2");
 		ents.add(btnTree);
+		
+		Ent btnBarrel = new Ent();
+		btnBarrel.setName("btnBarrelTile");
+		btnBarrel.setImg(Game.getGlobal().getImgByName("barrel"));
+		btnBarrel.setPosBox(new Rectangle(btnTree.getPosBox().getX() + 32,
+				btnDelete2.getPosBox().getY(),
+				btnBarrel.getImg().getTex().getWidth(),
+				btnBarrel.getImg().getTex().getHeight()));
+		btnBarrel.setType("layer2");
+		ents.add(btnBarrel);
+		
+		Ent btnBed = new Ent();
+		btnBed.setName("btnBedTile");
+		btnBed.setImg(Game.getGlobal().getImgByName("bed"));
+		btnBed.setPosBox(new Rectangle(btnBarrel.getPosBox().getX() + 32,
+				btnDelete2.getPosBox().getY(),
+				btnBed.getImg().getTex().getWidth(),
+				btnBed.getImg().getTex().getHeight()));
+		btnBed.setType("layer2");
+		ents.add(btnBed);
+		
+		Ent btnBox = new Ent();
+		btnBox.setName("btnBoxTile");
+		btnBox.setImg(Game.getGlobal().getImgByName("box"));
+		btnBox.setPosBox(new Rectangle(btnBed.getPosBox().getX() + 32,
+				btnDelete2.getPosBox().getY(),
+				btnBox.getImg().getTex().getWidth(),
+				btnBox.getImg().getTex().getHeight()));
+		btnBox.setType("layer2");
+		ents.add(btnBox);
+		
+		Ent btnChairLeft = new Ent();
+		btnChairLeft.setName("btnChairLeftTile");
+		btnChairLeft.setImg(Game.getGlobal().getImgByName("chairleft"));
+		btnChairLeft.setPosBox(new Rectangle(btnBox.getPosBox().getX() + 32,
+				btnDelete2.getPosBox().getY(),
+				btnChairLeft.getImg().getTex().getWidth(),
+				btnChairLeft.getImg().getTex().getHeight()));
+		btnChairLeft.setType("layer2");
+		ents.add(btnChairLeft);
+		
+		Ent btnChairRight = new Ent();
+		btnChairRight.setName("btnChairRightTile");
+		btnChairRight.setImg(Game.getGlobal().getImgByName("chairright"));
+		btnChairRight.setPosBox(new Rectangle(btnChairLeft.getPosBox().getX() + 32,
+				btnDelete2.getPosBox().getY(),
+				btnChairRight.getImg().getTex().getWidth(),
+				btnChairRight.getImg().getTex().getHeight()));
+		btnChairRight.setType("layer2");
+		ents.add(btnChairRight);
+		
+		Ent btnCity = new Ent();
+		btnCity.setName("btnCityTile");
+		btnCity.setImg(Game.getGlobal().getImgByName("city"));
+		btnCity.setPosBox(new Rectangle(btnChairRight.getPosBox().getX() + 32,
+				btnDelete2.getPosBox().getY(),
+				btnCity.getImg().getTex().getWidth(),
+				btnCity.getImg().getTex().getHeight()));
+		btnCity.setType("layer2");
+		ents.add(btnCity);
+		
+		Ent btnDoor = new Ent();
+		btnDoor.setName("btnDoorTile");
+		btnDoor.setImg(Game.getGlobal().getImgByName("door"));
+		btnDoor.setPosBox(new Rectangle(btnCity.getPosBox().getX() + 64,
+				btnDelete2.getPosBox().getY(),
+				btnDoor.getImg().getTex().getWidth(),
+				btnDoor.getImg().getTex().getHeight()));
+		btnDoor.setType("layer2");
+		ents.add(btnDoor);
+		
+		Ent btnDoor2 = new Ent();
+		btnDoor2.setName("btnDoor2Tile");
+		btnDoor2.setImg(Game.getGlobal().getImgByName("door2"));
+		btnDoor2.setPosBox(new Rectangle(btnDoor.getPosBox().getX() + 32,
+				btnDelete2.getPosBox().getY(),
+				btnDoor2.getImg().getTex().getWidth(),
+				btnDoor2.getImg().getTex().getHeight()));
+		btnDoor2.setType("layer2");
+		ents.add(btnDoor2);
+		
+		Ent btnFire = new Ent();
+		btnFire.setName("btnFireTile");
+		btnFire.setImg(Game.getGlobal().getImgByName("fire"));
+		btnFire.setPosBox(new Rectangle(btnDoor2.getPosBox().getX() + 32,
+				btnDelete2.getPosBox().getY(),
+				btnFire.getImg().getTex().getWidth(),
+				btnFire.getImg().getTex().getHeight()));
+		btnFire.setType("layer2");
+		ents.add(btnFire);
+		
+		Ent btnFlower2 = new Ent();
+		btnFlower2.setName("btnFlower2Tile");
+		btnFlower2.setImg(Game.getGlobal().getImgByName("flower2"));
+		btnFlower2.setPosBox(new Rectangle(btnFire.getPosBox().getX() + 32,
+				btnDelete2.getPosBox().getY(),
+				btnFlower2.getImg().getTex().getWidth(),
+				btnFlower2.getImg().getTex().getHeight()));
+		btnFlower2.setType("layer2");
+		ents.add(btnFlower2);
+		
+		Ent btnMountain1 = new Ent();
+		btnMountain1.setName("btnMountain1Tile");
+		btnMountain1.setImg(Game.getGlobal().getImgByName("mountain1"));
+		btnMountain1.setPosBox(new Rectangle(btnFlower2.getPosBox().getX() + 32,
+				btnDelete2.getPosBox().getY(),
+				btnMountain1.getImg().getTex().getWidth(),
+				btnMountain1.getImg().getTex().getHeight()));
+		btnMountain1.setType("layer2");
+		ents.add(btnMountain1);
+		
+		Ent btnMountain2 = new Ent();
+		btnMountain2.setName("btnMountain2Tile");
+		btnMountain2.setImg(Game.getGlobal().getImgByName("mountain2"));
+		btnMountain2.setPosBox(new Rectangle(btnMountain1.getPosBox().getX() + 32,
+				btnDelete2.getPosBox().getY(),
+				btnMountain2.getImg().getTex().getWidth(),
+				btnMountain2.getImg().getTex().getHeight()));
+		btnMountain2.setType("layer2");
+		ents.add(btnMountain2);
+		
+		Ent btnMountain3 = new Ent();
+		btnMountain3.setName("btnMountain3Tile");
+		btnMountain3.setImg(Game.getGlobal().getImgByName("mountain3"));
+		btnMountain3.setPosBox(new Rectangle(btnMountain2.getPosBox().getX() + 32,
+				btnDelete2.getPosBox().getY(),
+				btnMountain3.getImg().getTex().getWidth(),
+				btnMountain3.getImg().getTex().getHeight()));
+		btnMountain3.setType("layer2");
+		ents.add(btnMountain3);
+		
+		Ent btnLadder = new Ent();
+		btnLadder.setName("btnLadderTile");
+		btnLadder.setImg(Game.getGlobal().getImgByName("ladder"));
+		btnLadder.setPosBox(new Rectangle(btnMountain3.getPosBox().getX() + 32,
+				btnDelete2.getPosBox().getY(),
+				btnLadder.getImg().getTex().getWidth(),
+				btnLadder.getImg().getTex().getHeight()));
+		btnLadder.setType("layer2");
+		ents.add(btnLadder);
+		
+		Ent btnRock2 = new Ent();
+		btnRock2.setName("btnRock2Tile");
+		btnRock2.setImg(Game.getGlobal().getImgByName("rock2"));
+		btnRock2.setPosBox(new Rectangle(btnLadder.getPosBox().getX() + 32,
+				btnDelete2.getPosBox().getY(),
+				btnRock2.getImg().getTex().getWidth(),
+				btnRock2.getImg().getTex().getHeight()));
+		btnRock2.setType("layer2");
+		ents.add(btnRock2);
+		
+		Ent btnStairsDown = new Ent();
+		btnStairsDown.setName("btnStairsDownTile");
+		btnStairsDown.setImg(Game.getGlobal().getImgByName("stairsdown"));
+		btnStairsDown.setPosBox(new Rectangle(btnRock2.getPosBox().getX() + 32,
+				btnDelete2.getPosBox().getY(),
+				btnStairsDown.getImg().getTex().getWidth(),
+				btnStairsDown.getImg().getTex().getHeight()));
+		btnStairsDown.setType("layer2");
+		ents.add(btnStairsDown);
+		
+		Ent btnStairsUp = new Ent();
+		btnStairsUp.setName("btnStairsUpTile");
+		btnStairsUp.setImg(Game.getGlobal().getImgByName("stairsup"));
+		btnStairsUp.setPosBox(new Rectangle(btnStairsDown.getPosBox().getX() + 32,
+				btnDelete2.getPosBox().getY(),
+				btnStairsUp.getImg().getTex().getWidth(),
+				btnStairsUp.getImg().getTex().getHeight()));
+		btnStairsUp.setType("layer2");
+		ents.add(btnStairsUp);
+		
+		Ent btnTable = new Ent();
+		btnTable.setName("btnTableTile");
+		btnTable.setImg(Game.getGlobal().getImgByName("table"));
+		btnTable.setPosBox(new Rectangle(btnStairsUp.getPosBox().getX() + 32,
+				btnDelete2.getPosBox().getY(),
+				btnTable.getImg().getTex().getWidth(),
+				btnTable.getImg().getTex().getHeight()));
+		btnTable.setType("layer2");
+		ents.add(btnTable);
+		
+		Ent btnTown = new Ent();
+		btnTown.setName("btnTownTile");
+		btnTown.setImg(Game.getGlobal().getImgByName("town"));
+		btnTown.setPosBox(new Rectangle(btnTable.getPosBox().getX() + 32,
+				btnDelete2.getPosBox().getY(),
+				btnTown.getImg().getTex().getWidth(),
+				btnTown.getImg().getTex().getHeight()));
+		btnTown.setType("layer2");
+		ents.add(btnTown);
+		
+		Ent btnWell = new Ent();
+		btnWell.setName("btnWellTile");
+		btnWell.setImg(Game.getGlobal().getImgByName("well"));
+		btnWell.setPosBox(new Rectangle(btnTown.getPosBox().getX() + 32,
+				btnDelete2.getPosBox().getY(),
+				btnWell.getImg().getTex().getWidth(),
+				btnWell.getImg().getTex().getHeight()));
+		btnWell.setType("layer2");
+		ents.add(btnWell);
 		
 		Ent btnSelect = new Ent();
 		btnSelect.setName("btnSelect");
