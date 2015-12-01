@@ -9,6 +9,9 @@ public class Updater {
 	public static void update(){
 		updateInputs();
 		
+		if (Game.getGlobal().getGame() != null && Game.getGlobal().getGame().getWorld() != null)
+			Game.getGlobal().getGame().getWorld().setSubMenuJustLeft(false);
+		
 		Game.getGlobal().getCurrentMenu().update();
 		if (Game.getGlobal().getGame() != null && Game.getGlobal().getCurrentMenu().getCurrentSubMenu() == null)
 			Game.getGlobal().getGame().update();

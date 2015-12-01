@@ -6,6 +6,7 @@ import java.util.Random;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
@@ -13,10 +14,17 @@ import com.slyvronline.game.Game;
 import com.slyvronline.game.objects.Ent;
 import com.slyvronline.game.objects.Ent.State;
 import com.slyvronline.game.objects.Menu;
+import com.slyvronline.game.utils.TextInput;
 import com.slyvronline.game.utils.Utils;
 
 public class GameMenu extends Menu {
 
+	TextInput saveGameName;
+	TextInput loadGameName;
+	
+	private boolean saving;
+	private boolean loading;
+	
 	public GameMenu(){
 		
 	}
@@ -49,6 +57,12 @@ public class GameMenu extends Menu {
 				
 				selectTile();
 				updateDebugTooltip();
+				checkSave();
+				checkLoad();
+				saveGame();
+				loadGame();
+				super.updateButtonHover();
+				updateCreateCharacterButton();
 			}
 		}
 	}
@@ -85,6 +99,79 @@ public class GameMenu extends Menu {
 				for(Ent e : this.getEnts()){
 					if (e.getName() != selectedTile.getName()){
 						e.setState(State.NORMAL);
+					}
+				}
+			}
+		}
+	}
+	
+	public void saveGame(){
+		if(Gdx.input.justTouched()){
+			Rectangle mousePos = Utils.getMenuMousePos();
+			Ent btnSave = this.getEntByName("btnSave");
+			if (btnSave.getPosBox().overlaps(mousePos)){
+				saveGameName = new TextInput();
+				saving = true;
+				Gdx.input.getTextInput(saveGameName, "Enter save game file name", "world1","");
+			}
+		}
+	}
+	
+	public void checkSave(){
+		if (saving && saveGameName != null && saveGameName.getText() != null && saveGameName.getText() != ""){
+			saving = false;
+			String gameName = saveGameName.getText();
+			saveGameName = null;
+			String xmlOutput = Game.getGlobal().getGame().getWorld().save(gameName);
+			FileHandle saveFile = Gdx.files.external("DND/saveData/"+gameName+".xml");
+			if (xmlOutput==null)xmlOutput = "";
+			saveFile.writeString(xmlOutput, false);
+		}
+	}
+	
+	public void loadGame(){
+		if(Gdx.input.justTouched()){
+			Rectangle mousePos = Utils.getMenuMousePos();
+			Ent btnLoad = this.getEntByName("btnLoad");
+			if (btnLoad.getPosBox().overlaps(mousePos)){
+				loadGameName = new TextInput();
+				loading = true;
+				Gdx.input.getTextInput(loadGameName, "Enter load game file name", "world1","");
+			}
+		}
+	}
+	
+	public void checkLoad(){
+		if (loading && loadGameName != null && loadGameName.getText() != null && loadGameName.getText() != ""){
+			loading = false;
+			String gameName = loadGameName.getText();
+			loadGameName = null;
+			FileHandle loadFile = Gdx.files.external("DND/saveData/"+gameName+".xml");
+			try{
+				String xmlData = loadFile.readString();
+				xmlData = xmlData.replace("\n", "");
+				xmlData = xmlData.replace("\r", "");
+				Game.getGlobal().getGame().getWorld().load(gameName, xmlData);
+			}
+			catch(Exception ex){
+				
+			}
+		}
+	}
+	
+	public void updateCreateCharacterButton(){
+		if (Gdx.input.justTouched()){
+			Rectangle mousePos = Utils.getMenuMousePos();
+			Ent btnAdd = this.getEntByName("btnAddCharacter");
+			if (mousePos.overlaps(btnAdd.getPosBox())){
+				this.setCurrentSubMenu(this.getSubMenuByName("createcharacter"));
+				Ent btnSelect = this.getEntByName("btnSelect");
+				for(Ent btn : this.getEnts()){
+					if (btn.getName().contains("Tile") && btn.getName().contains("btn")){
+						if (btn.getName().equals("btnDeleteTile")){
+							btnSelect.setPosBox(new Rectangle(btn.getPosBox()));
+						}
+						btn.setState(State.NORMAL);
 					}
 				}
 			}
