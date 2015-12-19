@@ -1,13 +1,8 @@
 package com.slyvronline.game.objects.menus;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Random;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.files.FileHandle;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.slyvronline.game.Game;

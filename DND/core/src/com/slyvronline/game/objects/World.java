@@ -251,6 +251,18 @@ public class World {
 	
 	public void loadWorld(){
 		worldLoaded = true;
+		layer1 = new Layer();
+		layer1.setName("Layer 1");
+		
+		layer2 = new Layer();
+		layer2.setName("Layer 2");
+		
+		layer3 = new Layer();
+		layer3.setName("Layer 3");
+		
+		layer4 = new Layer();
+		layer4.setName("Layer 4");
+		
 		for(int y=0; y<height; y++){
 			for(int x=0; x<width; x++){
 				Ent tile = new Ent();
@@ -336,9 +348,15 @@ public class World {
 		if (placeableTile != null){
 			if (placeableTile.getName().contains("Delete")){
 				tile.setImg(null);
+				tile.getPosBox().setWidth(tileSize);
+				tile.getPosBox().setHeight(tileSize);
 			}
 			else{
 				tile.setImg(placeableTile.getImg());
+				if (placeableTile.getPosBox().getWidth() > tileSize){
+					tile.getPosBox().setWidth(placeableTile.getPosBox().getWidth());
+					tile.getPosBox().setHeight(placeableTile.getPosBox().getHeight());
+				}
 			}
 		}
 	}
