@@ -60,9 +60,9 @@ public class World {
 		tileSizeInput = new TextInput();
 		worldWidthInput = new TextInput();
 		worldHeightInput = new TextInput();
-		Gdx.input.getTextInput(tileSizeInput, "Enter tile size", "32","");
-		Gdx.input.getTextInput(worldWidthInput, "Enter world width", "100","");
-		Gdx.input.getTextInput(worldHeightInput, "Enter world height", "64","");
+		Gdx.input.getTextInput(tileSizeInput, "Enter tile size", "128","");
+		Gdx.input.getTextInput(worldWidthInput, "Enter world width", "32","");
+		Gdx.input.getTextInput(worldHeightInput, "Enter world height", "32","");
 		
 		loadWorld = false;
 		worldLoaded = false;

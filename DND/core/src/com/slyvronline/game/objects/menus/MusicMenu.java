@@ -77,7 +77,7 @@ public class MusicMenu extends Menu {
 			}
 		}
 		
-		if (!Game.getGlobal().getCurrentTrack().getMusic().isPlaying() && !paused){
+		if (Game.getGlobal().getCurrentTrack() != null && !Game.getGlobal().getCurrentTrack().getMusic().isPlaying() && !paused){
 			nextSong();
 		}
 	}

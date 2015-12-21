@@ -27,7 +27,7 @@ public class LoadImgs {
 			String name = path.split(".png")[0];
 			name = name.substring(name.lastIndexOf("/")+1, name.length());
 			Texture tex = new Texture(Gdx.files.internal(path));
-			imgs.add(new Img(tex,name));
+			imgs.add(new Img(tex,name, path));
 		}
 	}
 }

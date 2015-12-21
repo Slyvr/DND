@@ -15,6 +15,7 @@ public class Img {
 	private int id;
 	private String type;
 	private Texture tex;
+	private String path;
 	private TextureRegion currentFrame;
 	private TextureRegion[] texRegs;
 	private Animation anim;
@@ -24,6 +25,13 @@ public class Img {
 		this.name=name;
 		this.anim=null;
 		this.texRegs = null;
+	}
+	public Img(Texture tex, String name, String path){
+		this.tex=tex;
+		this.name=name;
+		this.anim=null;
+		this.texRegs = null;
+		this.path = path;
 	}
 	public Img(Texture tex, String name, TextureRegion[] texRegs, float animSpeed){
 		this.tex=tex;
@@ -82,6 +90,12 @@ public class Img {
 	}
 	public void setAnim(Animation anim) {
 		this.anim = anim;
+	}
+	public String getPath() {
+		return path;
+	}
+	public void setPath(String path) {
+		this.path = path;
 	}
 	
 	

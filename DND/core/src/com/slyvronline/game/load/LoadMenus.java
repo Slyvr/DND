@@ -9,6 +9,7 @@ import com.slyvronline.game.Game;
 import com.slyvronline.game.objects.Ent;
 import com.slyvronline.game.objects.Menu;
 import com.slyvronline.game.objects.Ent.State;
+import com.slyvronline.game.objects.Img;
 import com.slyvronline.game.objects.menus.CreateCharacterMenu;
 import com.slyvronline.game.objects.menus.GameMenu;
 import com.slyvronline.game.objects.menus.MainMenu;
@@ -644,222 +645,27 @@ public class LoadMenus {
 		bg.setColor(Color.BLUE);
 		subEnts.add(bg);
 		
-		Ent bandit1 = new Ent();
-		bandit1.setName("bandit1");
-		bandit1.setImg(Game.getGlobal().getImgByName("bandit1"));
-		bandit1.setPosBox(new Rectangle(bg.getPosBox().getX(),
-				bg.getPosBox().getY(),
-				bandit1.getImg().getTex().getWidth(),
-				bandit1.getImg().getTex().getHeight()));
-		subEnts.add(bandit1);
-		
-		Ent dragon1 = new Ent();
-		dragon1.setName("dragon1");
-		dragon1.setImg(Game.getGlobal().getImgByName("dragon1"));
-		dragon1.setPosBox(new Rectangle(bg.getPosBox().getX()+dragon1.getImg().getTex().getWidth(),
-				bg.getPosBox().getY(),
-				dragon1.getImg().getTex().getWidth(),
-				dragon1.getImg().getTex().getHeight()));
-		subEnts.add(dragon1);
-		
-		Ent dwarf1 = new Ent();
-		dwarf1.setName("dwarf1");
-		dwarf1.setImg(Game.getGlobal().getImgByName("dwarf1"));
-		dwarf1.setPosBox(new Rectangle(dragon1.getPosBox().getX()+dwarf1.getImg().getTex().getWidth(),
-				bg.getPosBox().getY(),
-				dwarf1.getImg().getTex().getWidth(),
-				dwarf1.getImg().getTex().getHeight()));
-		subEnts.add(dwarf1);
-		
-		Ent dwarf2 = new Ent();
-		dwarf2.setName("dwarf2");
-		dwarf2.setImg(Game.getGlobal().getImgByName("dwarf2"));
-		dwarf2.setPosBox(new Rectangle(dwarf1.getPosBox().getX()+dwarf2.getImg().getTex().getWidth(),
-				bg.getPosBox().getY(),
-				dwarf2.getImg().getTex().getWidth(),
-				dwarf2.getImg().getTex().getHeight()));
-		subEnts.add(dwarf2);
-		
-		Ent elf1 = new Ent();
-		elf1.setName("elf1");
-		elf1.setImg(Game.getGlobal().getImgByName("elf1"));
-		elf1.setPosBox(new Rectangle(dwarf2.getPosBox().getX()+elf1.getImg().getTex().getWidth(),
-				bg.getPosBox().getY(),
-				elf1.getImg().getTex().getWidth(),
-				elf1.getImg().getTex().getHeight()));
-		subEnts.add(elf1);
-		
-		Ent goblin1 = new Ent();
-		goblin1.setName("goblin1");
-		goblin1.setImg(Game.getGlobal().getImgByName("goblin1"));
-		goblin1.setPosBox(new Rectangle(elf1.getPosBox().getX()+goblin1.getImg().getTex().getWidth(),
-				bg.getPosBox().getY(),
-				goblin1.getImg().getTex().getWidth(),
-				goblin1.getImg().getTex().getHeight()));
-		subEnts.add(goblin1);
-		
-		Ent halfling1 = new Ent();
-		halfling1.setName("halfling1");
-		halfling1.setImg(Game.getGlobal().getImgByName("halfling1"));
-		halfling1.setPosBox(new Rectangle(goblin1.getPosBox().getX()+halfling1.getImg().getTex().getWidth(),
-				bg.getPosBox().getY(),
-				halfling1.getImg().getTex().getWidth(),
-				halfling1.getImg().getTex().getHeight()));
-		subEnts.add(halfling1);
-		
-		Ent halfling2 = new Ent();
-		halfling2.setName("halfling2");
-		halfling2.setImg(Game.getGlobal().getImgByName("halfling2"));
-		halfling2.setPosBox(new Rectangle(halfling1.getPosBox().getX()+halfling2.getImg().getTex().getWidth(),
-				bg.getPosBox().getY(),
-				halfling2.getImg().getTex().getWidth(),
-				halfling2.getImg().getTex().getHeight()));
-		subEnts.add(halfling2);
-		
-		Ent knight1 = new Ent();
-		knight1.setName("knight1");
-		knight1.setImg(Game.getGlobal().getImgByName("knight1"));
-		knight1.setPosBox(new Rectangle(bg.getPosBox().getX(),
-				bg.getPosBox().getY()+knight1.getImg().getTex().getHeight(),
-				knight1.getImg().getTex().getWidth(),
-				knight1.getImg().getTex().getHeight()));
-		subEnts.add(knight1);
-		
-		Ent ogre1 = new Ent();
-		ogre1.setName("ogre1");
-		ogre1.setImg(Game.getGlobal().getImgByName("ogre1"));
-		ogre1.setPosBox(new Rectangle(knight1.getPosBox().getX()+ogre1.getImg().getTex().getWidth(),
-				bg.getPosBox().getY()+knight1.getImg().getTex().getHeight(),
-				ogre1.getImg().getTex().getWidth(),
-				ogre1.getImg().getTex().getHeight()));
-		subEnts.add(ogre1);
-		
-		Ent skeleton1 = new Ent();
-		skeleton1.setName("skeleton1");
-		skeleton1.setImg(Game.getGlobal().getImgByName("skeleton1"));
-		skeleton1.setPosBox(new Rectangle(ogre1.getPosBox().getX()+skeleton1.getImg().getTex().getWidth(),
-				bg.getPosBox().getY()+knight1.getImg().getTex().getHeight(),
-				skeleton1.getImg().getTex().getWidth(),
-				skeleton1.getImg().getTex().getHeight()));
-		subEnts.add(skeleton1);
-		
-		Ent beholder = new Ent();
-		beholder.setName("beholder");
-		beholder.setImg(Game.getGlobal().getImgByName("beholder"));
-		beholder.setPosBox(new Rectangle(skeleton1.getPosBox().getX()+beholder.getImg().getTex().getWidth(),
-				bg.getPosBox().getY()+knight1.getImg().getTex().getHeight(),
-				beholder.getImg().getTex().getWidth(),
-				beholder.getImg().getTex().getHeight()));
-		subEnts.add(beholder);
-		
-		Ent bird = new Ent();
-		bird.setName("bird");
-		bird.setImg(Game.getGlobal().getImgByName("bird"));
-		bird.setPosBox(new Rectangle(beholder.getPosBox().getX()+bird.getImg().getTex().getWidth(),
-				bg.getPosBox().getY()+knight1.getImg().getTex().getHeight(),
-				bird.getImg().getTex().getWidth(),
-				bird.getImg().getTex().getHeight()));
-		subEnts.add(bird);
-		
-		Ent cat = new Ent();
-		cat.setName("cat");
-		cat.setImg(Game.getGlobal().getImgByName("cat"));
-		cat.setPosBox(new Rectangle(bird.getPosBox().getX()+cat.getImg().getTex().getWidth(),
-				bg.getPosBox().getY()+knight1.getImg().getTex().getHeight(),
-				cat.getImg().getTex().getWidth(),
-				cat.getImg().getTex().getHeight()));
-		subEnts.add(cat);
-		
-		Ent dino = new Ent();
-		dino.setName("dino");
-		dino.setImg(Game.getGlobal().getImgByName("dino"));
-		dino.setPosBox(new Rectangle(cat.getPosBox().getX()+dino.getImg().getTex().getWidth(),
-				bg.getPosBox().getY()+knight1.getImg().getTex().getHeight(),
-				dino.getImg().getTex().getWidth(),
-				dino.getImg().getTex().getHeight()));
-		subEnts.add(dino);
-		
-		Ent golem = new Ent();
-		golem.setName("golem");
-		golem.setImg(Game.getGlobal().getImgByName("golem"));
-		golem.setPosBox(new Rectangle(dino.getPosBox().getX()+golem.getImg().getTex().getWidth(),
-				bg.getPosBox().getY()+knight1.getImg().getTex().getHeight(),
-				golem.getImg().getTex().getWidth(),
-				golem.getImg().getTex().getHeight()));
-		subEnts.add(golem);
-		
-		Ent horse = new Ent();
-		horse.setName("horse");
-		horse.setImg(Game.getGlobal().getImgByName("horse"));
-		horse.setPosBox(new Rectangle(bg.getPosBox().getX(),
-				knight1.getPosBox().getY()+horse.getImg().getTex().getHeight(),
-				horse.getImg().getTex().getWidth(),
-				horse.getImg().getTex().getHeight()));
-		subEnts.add(horse);
-		
-		Ent peasant1 = new Ent();
-		peasant1.setName("peasant1");
-		peasant1.setImg(Game.getGlobal().getImgByName("peasant1"));
-		peasant1.setPosBox(new Rectangle(horse.getPosBox().getX()+peasant1.getImg().getTex().getWidth(),
-				knight1.getPosBox().getY()+horse.getImg().getTex().getHeight(),
-				peasant1.getImg().getTex().getWidth(),
-				peasant1.getImg().getTex().getHeight()));
-		subEnts.add(peasant1);
-		
-		Ent peasant2 = new Ent();
-		peasant2.setName("peasant2");
-		peasant2.setImg(Game.getGlobal().getImgByName("peasant2"));
-		peasant2.setPosBox(new Rectangle(peasant1.getPosBox().getX()+peasant2.getImg().getTex().getWidth(),
-				knight1.getPosBox().getY()+horse.getImg().getTex().getHeight(),
-				peasant2.getImg().getTex().getWidth(),
-				peasant2.getImg().getTex().getHeight()));
-		subEnts.add(peasant2);
-		
-		Ent peasant3 = new Ent();
-		peasant3.setName("peasant3");
-		peasant3.setImg(Game.getGlobal().getImgByName("peasant3"));
-		peasant3.setPosBox(new Rectangle(peasant2.getPosBox().getX()+peasant3.getImg().getTex().getWidth(),
-				knight1.getPosBox().getY()+horse.getImg().getTex().getHeight(),
-				peasant3.getImg().getTex().getWidth(),
-				peasant3.getImg().getTex().getHeight()));
-		subEnts.add(peasant3);
-		
-		Ent rat = new Ent();
-		rat.setName("rat");
-		rat.setImg(Game.getGlobal().getImgByName("rat"));
-		rat.setPosBox(new Rectangle(peasant3.getPosBox().getX()+rat.getImg().getTex().getWidth(),
-				knight1.getPosBox().getY()+horse.getImg().getTex().getHeight(),
-				rat.getImg().getTex().getWidth(),
-				rat.getImg().getTex().getHeight()));
-		subEnts.add(rat);
-		
-		Ent skeleton2 = new Ent();
-		skeleton2.setName("skeleton2");
-		skeleton2.setImg(Game.getGlobal().getImgByName("skeleton2"));
-		skeleton2.setPosBox(new Rectangle(rat.getPosBox().getX()+skeleton2.getImg().getTex().getWidth(),
-				knight1.getPosBox().getY()+horse.getImg().getTex().getHeight(),
-				skeleton2.getImg().getTex().getWidth(),
-				skeleton2.getImg().getTex().getHeight()));
-		subEnts.add(skeleton2);
-		
-		Ent slime = new Ent();
-		slime.setName("slime");
-		slime.setImg(Game.getGlobal().getImgByName("slime"));
-		slime.setPosBox(new Rectangle(skeleton2.getPosBox().getX()+slime.getImg().getTex().getWidth(),
-				knight1.getPosBox().getY()+horse.getImg().getTex().getHeight(),
-				slime.getImg().getTex().getWidth(),
-				slime.getImg().getTex().getHeight()));
-		subEnts.add(slime);
-		
-		Ent wolf = new Ent();
-		wolf.setName("wolf");
-		wolf.setImg(Game.getGlobal().getImgByName("wolf"));
-		wolf.setPosBox(new Rectangle(slime.getPosBox().getX()+wolf.getImg().getTex().getWidth(),
-				knight1.getPosBox().getY()+horse.getImg().getTex().getHeight(),
-				wolf.getImg().getTex().getWidth(),
-				wolf.getImg().getTex().getHeight()));
-		subEnts.add(wolf);
-		
+		//Load character lists
+		float x=bg.getPosBox().getX();
+		float y=bg.getPosBox().getY();
+		for(Img img : Game.getGlobal().getImgs()){
+			if (img.getPath().contains("character")){
+				Ent character = new Ent();
+				character.setName(img.getName());
+				character.setImg(img);
+				character.setPosBox(new Rectangle(x,
+						y,
+						character.getImg().getTex().getWidth(),
+						character.getImg().getTex().getHeight()));
+				subEnts.add(character);
+				
+				x += character.getImg().getTex().getWidth();
+				if (x >= bg.getPosBox().getX()+bg.getPosBox().getWidth()){
+					y += character.getImg().getTex().getHeight();
+					x = bg.getPosBox().getX();
+				}
+			}
+		}
 		
 		menu.setEnts(subEnts);
 		
